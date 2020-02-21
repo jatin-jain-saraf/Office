@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+		<p id="jatin"> Hello</p>
+		<p class="jj"> welcome</p>
+		<p id="jatin"> Hello</p>
+		<p class="jj"> welcome</p>
+	<script type="text/javascript">
+
+		// accessing children of boday
+		var child =document.body.children;
+		console.log(child);
+
+		// adding new child 
+		var para = document.createElement("p");
+		var textNode = document.createTextNode("This is trail");
+		para.appendChild(textNode);
+		console.log(para);
+		document.body.appendChild(para);
+	</script>
+</body>
+</html>

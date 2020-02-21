@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Enter your choice</h3>
+    <ul>
+        <li>Add</li>
+        <li>Sub</li>
+        <li>Multi</li>
+    </ul>
+    <form>
+        <input type="text" name="" id="choices">
+        <br> 
+        <button onclick="myfun()">
+            click me
+        </button>
+    </form>
+    <script type="text/javascript">
+ 
+        function myfun()
+        {
+            var choice =document.getElementById("choices").value;
+        
+        switch (choice) {
+            case "Add": var a=20;
+                        var b=10;
+                        var sum = a+b;
+                        document.write(sum);
+                break;
+            case "Sub": var a=20;
+                        var b=10;
+                        var sub = a-b;
+                        document.write(sub);
+                break;
+            case "Multi":   var a=20;
+                            var b=10;
+                            var into = a*b;
+                            document.write(into);
+                break;    
+    
+            default:
+                break;
+        }
+        }
+    </script>
+    
+</body>
+</html>
