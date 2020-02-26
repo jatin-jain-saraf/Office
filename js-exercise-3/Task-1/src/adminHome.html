@@ -22,8 +22,8 @@
         <ul class="navbar-nav mr-auto">
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <h4>Admin</h4>
-          <button class="btn btn-primary btn-outline-light ml-3">Logout</button>
+          <blockquote class="" id="role"></blockquote>
+          <button onclick="logoutBtn()" class="btn btn-primary btn-outline-light ml-3">Logout</button>
         </form>
       </div>
     </div>
@@ -34,13 +34,14 @@
     <div class="card">
       <h5 class="card-header bg-secondary mb-3 text-light">Dashboard</h5>
       <div class="card-body">
+        <button type="button" id="add"class="btn btn-success" data-toggle="modal" data-target="#myModal"  style="float:right;">ADD</button>
         <div class="row">
           <div class="col-lg-4 col-md-6 col-12">
             <div class="card " style="width: 80%;">
               <img class="card-img-top" src="../img/html.png" alt="Card image cap">
               <div class="card-body text-center">
                 <h3 class="card-title">Html5</h3>
-                <a href="#" class="btn btn-primary">Assign Course</a>
+                <button onclick="assign()" class="btn btn-primary">Assign Course</button>
               </div>
             </div>
           </div>
@@ -49,7 +50,7 @@
               <img class="card-img-top" src="../img/css.png" alt="Card image cap">
               <div class="card-body text-center">
                 <h3 class="card-title">Css3</h3>
-                <a href="#" class="btn btn-primary">Assign Course</a>
+                <button onclick="assign()" class="btn btn-primary">Assign Course</button>
               </div>
             </div>
           </div>
@@ -58,7 +59,7 @@
               <img class="card-img-top" src="../img/js.png" alt="Card image cap">
               <div class="card-body text-center">
                 <h3 class="card-title">Js</h3>
-                <a href="#" class="btn btn-primary">Assign Course</a>
+                <button onclick="assign()" class="btn btn-primary">Assign Course</button>
               </div>
             </div>
           </div>
@@ -67,11 +68,32 @@
     </div>
   </div>
 
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 
 
 
 
 
+
+  <script src="../js/adminHome.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
