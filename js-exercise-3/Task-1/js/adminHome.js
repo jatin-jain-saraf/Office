@@ -115,17 +115,17 @@ for (let i = 0; i < coursesArrFetch.length; i++) {
                                 </tr>`
 }
 function RemoveCourse(courseId) {
-    
-    for (let i =0; i < coursesArrFetch.length; i++) {
-        
+
+    for (let i = 0; i < coursesArrFetch.length; i++) {
+
         if (coursesArrFetch[i].courseId === courseId) {
-            
-           coursesArrFetch.splice(i, 1);
-        console.log(coursesArrFetch);
-        localStorage.setItem('coursesArr',JSON.stringify(coursesArrFetch))
-        location.reload(true);
-    }
-        
+
+            coursesArrFetch.splice(i, 1);
+            console.log(coursesArrFetch);
+            localStorage.setItem('coursesArr', JSON.stringify(coursesArrFetch))
+            location.reload(true);
+        }
+
 
 
     }
@@ -133,3 +133,26 @@ function RemoveCourse(courseId) {
 
 }
 
+function sendDataToStudent(courseId, userEmail) {
+
+    if (document.getElementById(`${userEmail}`).checked) {
+        userArr.forEach((user) => {
+            if (userEmail === user.email) {
+                user.courses.push(courseId)
+                localStorage.setItem('userArr', JSON.stringify(userArr))
+            }
+        })
+    } else {
+        userArr.forEach((user)=>{
+            
+            if(userEmail===user.email){
+                user.courses.splice(courseId-1,1)
+                
+                localStorage.setItem('userArr', JSON.stringify(userArr))
+                
+            }
+        })
+    }
+
+
+}
