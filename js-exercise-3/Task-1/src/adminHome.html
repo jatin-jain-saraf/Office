@@ -48,7 +48,7 @@
 
               <button class="btn btn-success" data-toggle="modal" data-target="#myAddForm"
                 style="margin-left:10%; margin-top: 4%;">ADD</button>
-              <button class="btn btn-warning" data-toggle="modal" data-target="#myRemoveForm"
+              <button class="btn btn-warning" data-toggle="modal" data-target="#removeCourse"
                 style="margin-left:50%; margin-top: 4%;">Remove</button>
             </div>
             <div class="modal-body">
@@ -110,6 +110,40 @@
     </div>
   </div>
   <!-- card end -->
+
+  <!-- MyCourseREmove MOdel -->
+  <div class="modal fade" id="removeCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeCourse">Remove Course</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="CourseList" class="modal-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>courseImg</td>
+              <td>Course-Name</td>
+              <td>Remove Course</td>
+            </tr>
+          </thead>
+          <tbody id="TbodyRemove">
+
+          </tbody>
+          <tfoot>
+
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Course remove model end -->
+
 
 
   <!-- MyAddFormModal start-->

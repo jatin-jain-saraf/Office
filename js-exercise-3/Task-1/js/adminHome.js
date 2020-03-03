@@ -7,6 +7,7 @@ let coursesArr = JSON.parse(localStorage.getItem('coursesArr')) ? JSON.parse(loc
 let courseName = document.getElementById("courseName");
 let courseImg = document.getElementById("courseImg");
 let courseLink = document.getElementById("courseLink");
+const tbodyRemove = document.getElementById("TbodyRemove");
 let courseId = 0;
 let result = "";
 let img;
@@ -40,11 +41,6 @@ logout = () => {
     }
 }
 
-
-
-
-
-
 for (let user of userArr) {
     if (user.email === currentUser) {
         currentUserName = user.name;
@@ -52,7 +48,7 @@ for (let user of userArr) {
 }
 document.getElementById("role").innerHTML = currentUserName;
 
-document.getElementById("AddCourse").addEventListener('click',event => {
+document.getElementById("AddCourse").addEventListener('click', event => {
     if (courseName.value == '') {
         alert("Please Enter the course Name ")
     } else if (courseImg.value == '') {
@@ -61,7 +57,7 @@ document.getElementById("AddCourse").addEventListener('click',event => {
         alert("Please Enter the course Link ")
     } else {
         console.log('Hello');
-        
+
         let objOfCourse = {
             courseName: courseName.value,
             courseImg: courseImg.value,
@@ -72,7 +68,7 @@ document.getElementById("AddCourse").addEventListener('click',event => {
 
         coursesArr.push(objOfCourse);
         console.log(objOfCourse);
-        
+
         localStorage.setItem('coursesArr', JSON.stringify(coursesArr));
         window.location.href = "../src/adminHome.html";
     }
@@ -84,9 +80,9 @@ coursesArrFetch = JSON.parse(coursesArrFetch);
 for (let i = 0; i < coursesArrFetch.length; i++) {
     courseId = coursesArrFetch[i].courseId
     img = coursesArrFetch[i].courseImg;
-    result += `<div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="card text-center">
-                            <img src = '${img}'>
+    document.getElementById("allCourse").innerHTML += `<div class="col-sm-12 col-md-6 col-lg-4 mb-5">
+                        <div class="card pt-5 text-center">
+                            <img src = '${img}' height="200px">
                             <div class="card-body">
                             <h5 class="card-title">${coursesArr[i].courseName}</h5>
                         </div>
@@ -97,22 +93,43 @@ for (let i = 0; i < coursesArrFetch.length; i++) {
                         </div>
                     </div>`
 }
-document.getElementById("allCourse").innerHTML = result;
 
-
-assignCourse = (courseId) => {
-
+let assignCourse = (courseId) => {
     for (let i = 0; i < userArr.length; i++) {
         if (userArr[i].role === "student") {
-            // console.log(courseId)
-            studentForAssign += `<tr> 
+            document.getElementById("assignCourse").innerHTML += `<tr> 
                                     <td>${userArr[i].name}</td>
                                     <td>${userArr[i].email}</td>
-                                    <td><input type="checkbox" id="${userArr[i].email}" onclick="sendDataToStudent(${courseId},'${userArr[i].email}')" value = '${courseId}' ${userArr[i].courses.includes(courseId)? "checked" : ""}></td>
+                                    <td><input type="checkbox" id="${userArr[i].email}" onclick="sendDataToStudent(${courseId},'${userArr[i].email}')" value = '${courseId}' ${userArr[i].courses.includes(courseId) ? "checked" : ""}></td>
                                 </tr>`
         }
     }
 
-    document.getElementById("assignCourse").innerHTML = studentForAssign;
+}
+
+for (let i = 0; i < coursesArrFetch.length; i++) {
+    tbodyRemove.innerHTML += `<tr>
+                                    <td><img src="${coursesArrFetch[i].courseImg}" width="50px"></td>
+                                    <td>${coursesArrFetch[i].courseName}</td>
+                                    <td><button class="btn btn-danger" onclick="RemoveCourse(${coursesArrFetch[i].courseId})">Remove</button></td>
+                                </tr>`
+}
+function RemoveCourse(courseId) {
+    
+    for (let i =0; i < coursesArrFetch.length; i++) {
+        
+        if (coursesArrFetch[i].courseId === courseId) {
+            
+           coursesArrFetch.splice(i, 1);
+        console.log(coursesArrFetch);
+        localStorage.setItem('coursesArr',JSON.stringify(coursesArrFetch))
+        location.reload(true);
+    }
+        
+
+
+    }
+
+
 }
 
